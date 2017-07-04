@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+		<!-- 2-定义模板
+			传递给模板引擎的数据必须是对象，
+			在模板引擎中直接对象的属性名
+		 -->
+		<script type="text/template" id="tmp">
+			<h4><%=title %></h4>
+			<ul>
+			<% for(var i=0;i<list.length;i++){ %>
+				<li>
+					<%=list[i] %>
+				</li>
+			<% } %>
+			</ul>
+			<!-- 引入模板引擎的插件 -->
+		</script>
+
+
+    	<!-- 引入模板引擎的插件 -->
+    	<script src="template-native.js"></script>
+   		<script>
+
+   			//1-数据
+   			var data = {
+			    title: '首页',
+			    list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+			};
+
+		var html=template("tmp",data);
+		document.body.innerHTML=html;
+			//之前渲染数据的方式
+			// var html='<ul>';
+
+			// for(var i=0;i<data.list.length;i++){
+			// 	html+='<li>'+data.list[i]+'</li>';
+			// }
+			// html+='</ul>';
+
+			// document.body.innerHTML=html; //放在页面中
+
+
+			//模板引擎使用步骤：
+			//0-引入模板引擎的插件
+			//1-准备模板
+			//2-准备数据
+			//3-把模板和数据进行组装 会生成 对应个页面
+
+
+			// 语法：
+			// <% 与  %> 符号包裹起来的语句则为模板的逻辑表达式
+			//<%= content %>为输出表达式值
+
+			//组装模板和数据
+			//参数1： 模板引擎 　必须是id  
+			//参数2：传递给模板引擎的数据　必须是对象
+		
+
+   		</script>
+    </body>
+</html>
